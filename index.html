@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Generador de Nicks · Nexora</title>
+<meta name="description" content="Generador de nombres y nicks para Free Fire, PUBG, Fortnite, Roblox, Minecraft y más. Fuentes especiales, símbolos y vista previa de la kill.">
+<meta name="theme-color" content="#03040a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%8E%AE%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Lilita+One&family=Rajdhani:wght@600;700&family=Barlow+Condensed:wght@600;700&family=VT323&family=Source+Sans+3:wght@600&family=Varela+Round&family=Anton&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#03040a;--card:#0a0c18;--tx:#f4f6ff;--mu:#8f96b8;--ac:#18d6ee;--ac2:#b052f5;--bd:#1f2446;--on:#07070d;--grad:linear-gradient(120deg,#18d6ee,#2f7cf5 42%,#a21cf0 78%,#d726e8);--soft:color-mix(in srgb,#b052f5 16%,transparent);color-scheme:dark}
+
+
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+.top{border-bottom:1px solid #a050f040;background:#0a0612b8;backdrop-filter:blur(8px)}.top div{max-width:980px;margin:0 auto;padding:14px}.brand{display:inline-flex;flex-direction:column;gap:6px;text-decoration:none;transition:opacity .15s,transform .15s}.brand:hover{opacity:.88;transform:translateY(-1px)}.brand b{font:italic 900 1.85rem/1 "Segoe UI",system-ui,sans-serif;letter-spacing:-.02em;color:#f4f2ff}.brand b i{font-style:italic;background:linear-gradient(120deg,#a050f0,#d726e8);-webkit-background-clip:text;background-clip:text;color:transparent}.brand small{font-size:.6rem;letter-spacing:.34em;color:var(--mu);text-transform:uppercase}
+body{margin:0;background:radial-gradient(800px 420px at 8% -8%,#18d6ee24,transparent),radial-gradient(800px 420px at 100% 0,#a21cf02e,transparent),var(--bg);background-attachment:fixed;color:var(--tx);font:15px/1.5 "Segoe UI",system-ui,sans-serif}
+.w{max-width:980px;margin:0 auto;padding:18px 14px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:16px}
+h1{font:800 clamp(28px,6vw,46px)/1.05 "Segoe UI",system-ui,sans-serif;margin:0 0 6px;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 em{font-style:normal}
+.sub{color:var(--mu);margin:0;max-width:56ch}
+button,select,input{font:inherit;color:inherit}
+.ic{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px 12px;cursor:pointer}
+.panel{background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;border:1px solid transparent;border-radius:20px;padding:20px 18px;box-shadow:0 12px 44px #18d6ee14,0 -4px 30px #a21cf014}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mu)}
+select,input[type=text]{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:9px 10px;color:var(--tx);width:100%}
+.ck{display:flex;flex-direction:row;align-items:center;gap:6px;color:var(--tx);font-size:14px}
+.row{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;align-items:center}
+.note{margin-top:12px;padding:9px 12px;border-radius:9px;background:var(--bg);border-left:3px solid var(--ac2);color:var(--mu);font-size:13px}
+.go{background:var(--grad);color:#07070d;border:0;border-radius:11px;padding:11px 22px;font:700 16px "Chakra Petch",system-ui,sans-serif;cursor:pointer}
+.go:active{transform:translateY(1px)}
+.tabs{display:flex;gap:6px;margin:18px 0 10px;flex-wrap:wrap}
+.tab{background:transparent;border:1px solid var(--bd);border-radius:999px;padding:7px 15px;cursor:pointer;color:var(--mu)}
+.tab[aria-selected=true]{background:var(--soft);color:var(--tx);border-color:var(--ac2)}
+#out{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:9px}
+.c{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:9px 10px}
+.t{flex:1;min-width:0;overflow-wrap:anywhere;font-size:17px}
+.l{font-size:12px;color:var(--mu);white-space:nowrap}
+.bad .l{color:#e0364f;font-weight:700}
+.b{background:var(--bg);border:1px solid var(--bd);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px}
+.b.on{color:var(--ac);border-color:var(--ac)}
+.bar{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center;color:var(--mu);font-size:13px}
+.empty{color:var(--mu);padding:20px;text-align:center;grid-column:1/-1}
+details{margin-top:22px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 16px}
+summary{cursor:pointer;font-weight:600}
+details ul{margin:10px 0 0;padding-left:20px;color:var(--mu)}
+#toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:9px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.s{opacity:1}
+:focus-visible{outline:2px solid var(--ac2);outline-offset:2px}.pv{margin:0 0 12px}.cp{margin-top:6px;font-size:12px;color:var(--mu)}.kf{position:relative;height:190px;border-radius:12px;overflow:hidden;background:var(--s)}.kk{position:absolute;display:flex;flex-direction:column;gap:4px;padding:10px;padding-bottom:var(--pb,10px);max-width:100%}.kf.tl .kk{top:0;left:0;align-items:flex-start}.kl em{font-style:normal;color:var(--ea)}.kl u{text-decoration:none;color:var(--eb)}.ag{width:18px;height:18px;border-radius:2px;background:linear-gradient(135deg,#37d4a6,#1b7a66)}.ag.e{background:linear-gradient(135deg,#ff7a85,#9c2432)}.bn{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:800 15px system-ui;color:#fff;text-shadow:0 2px 4px #000}.bn small{font-size:12px;opacity:.9}.hb{position:absolute;left:50%;bottom:6px;width:190px;height:22px;transform:translateX(-50%);background:repeating-linear-gradient(90deg,#8b8b8b 0 20px,#373737 20px 22px);border:2px solid #373737}.kf.r .kk{top:0;right:0;align-items:flex-end}.kf.l .kk{bottom:0;left:0;align-items:flex-start}.kf.c .kk{top:0;left:0;right:0;align-items:center}.kl{display:flex;gap:7px;align-items:center;padding:4px 10px;background:var(--b);border-radius:var(--r);font:var(--f);color:var(--c,#fff);max-width:100%;overflow-wrap:anywhere;text-shadow:var(--ts,0 1px 2px #0008)}.kl s{text-decoration:none;opacity:.85;font-size:.85em;padding:0 6px;border-left:1px solid #fff5;border-right:1px solid #fff5}.kl.you{outline:2px solid var(--y);background:var(--yb)}.sy{display:flex;flex-wrap:wrap;gap:6px;grid-column:1/-1;align-items:center}.sy button{min-width:40px;height:40px;font-size:18px;background:var(--card);border:1px solid var(--bd);border-radius:8px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><nav class="top"><div><a class="brand" href="https://nexoraunktools.blogspot.com" aria-label="Ir a la página principal de Nexora"><b>NEX<i>ORA</i></b><small>Tools &amp; Resources</small></a></div></nav><div class="w">
+<header><div><h1>Generador de <em>nombres gamer</em></h1>
+<p class="sub">Nicks para Free Fire y otros juegos: elegí el juego, el estilo y copiá. Respeta el límite de caracteres de cada uno.</p></div>
+</header>
+
+<section class="panel">
+<div class="g">
+<label>Juego<select id="game"></select></label>
+<label>Estilo de palabras<select id="theme">
+<option value="mix">Mezcla de todo</option><option value="pro">Pro y tryhard</option><option value="epico">Épico</option><option value="oscuro">Oscuro</option><option value="anime">Anime y otaku</option><option value="gracioso">Gracioso</option><option value="militar">Militar</option><option value="fantasia">Fantasía</option><option value="latino">Latino</option><option value="cyber">Cyber y neón</option><option value="lindo">Lindo y suave</option><option value="futbol">Fútbol</option></select></label>
+<label>Letras<select id="case"><option value="">Como salga</option><option value="up">MAYÚSCULAS</option><option value="low">minúsculas</option></select></label>
+<label>Fuente especial<select id="fx"></select></label>
+<label>Marco decorativo<select id="dc"></select></label>
+<label>Cantidad<select id="qty"><option>12</option><option selected>24</option><option>48</option></select></label><label>Largo máximo<select id="mx"><option value="0">Según el juego</option><option>6</option><option>8</option><option>10</option><option>12</option><option>16</option></select></label><label>Empieza con la letra<select id="st"><option value="">Cualquiera</option></select></label><label>Tu palabra va<select id="ps"><option value="r">Al azar</option><option value="s">Al inicio</option><option value="e">Al final</option></select></label>
+</div>
+<div class="g" style="margin-top:12px"><label>Tu palabra o nombre base (opcional, también se usa en "Estilizar")<input type="text" id="kw" maxlength="40" placeholder="Ej: Nexora"></label></div>
+<div class="row">
+<label class="ck"><input type="checkbox" id="num">Agregar números</label>
+<label class="ck"><input type="checkbox" id="leet">Cambiar letras por números (l33t)</label><label class="ck"><input type="checkbox" id="tg">Agregar #TAG (Riot)</label>
+<button class="go" id="run">Generar</button><button class="ic" id="sur">Sorpréndeme</button></div>
+<div class="note" id="info"></div><div class="row"><label>Fondo propio para la vista previa (captura de tu juego)<input type="file" id="ub" accept="image/*"></label><label>Ícono de arma propio (PNG)<input type="file" id="uw" accept="image/*"></label><button class="ic" id="ur">Quitar imágenes</button></div>
+</section>
+
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" data-tab="name" aria-selected="true">Nombres</button>
+<button class="tab" role="tab" data-tab="clan" aria-selected="false">Clanes y escuadrones</button>
+<button class="tab" role="tab" data-tab="style" aria-selected="false">Estilizar mi nombre</button>
+<button class="tab" role="tab" data-tab="sym" aria-selected="false">Símbolos</button><button class="tab" role="tab" data-tab="chk" aria-selected="false">Revisar compatibilidad</button><button class="tab" role="tab" data-tab="bio" aria-selected="false">Frases para el perfil</button><button class="tab" role="tab" data-tab="fav" aria-selected="false">Favoritos <span id="fc">0</span></button></div>
+<div class="bar" id="bar"></div>
+<div class="pv" id="pv" hidden></div><div id="out" aria-live="polite"></div>
+
+<details><summary>Ideas y consejos para elegir tu nombre</summary><ul>
+<li>Los límites de cada juego son aproximados y pueden cambiar con las actualizaciones. Si el juego rechaza un símbolo, probá otro marco o una fuente distinta.</li>
+<li>Según varias guías, cambiar el nombre en Free Fire cuesta diamantes (unos 390), así que elegí bien. Esta página no puede ver si un nombre está libre: eso solo lo confirma el juego.</li><li>Las demás páginas de nicks ofrecen letra inicial, largo y posición de la palabra, símbolos y espacios invisibles. Todo eso está acá, más la pestaña para revisar la compatibilidad.</li><li>El botón Aa de cada nombre copia una versión simple, sin símbolos ni fuentes, por si el juego rechaza la decorada. Tus ajustes y tu palabra base se guardan en este navegador.</li><li>Los nombres con fuentes especiales son más difíciles de buscar para tus amigos: dejá una versión simple anotada.</li>
+<li>Los nombres cortos (4 a 8 letras) se leen mejor en el killfeed y en el chat.</li>
+<li>Revisá que el nombre esté libre desde el buscador de amigos del juego antes de gastar una tarjeta de cambio de nombre.</li>
+<li>No uses datos personales (nombre real, edad, escuela) en tu nick.</li>
+<li>Usá el mismo nombre base en todos tus juegos y redes para que te reconozcan.</li>
+<li>En Roblox, Minecraft, Valorant, LoL y Among Us se usan solo letras, números y guion bajo, así que los marcos y fuentes se desactivan.</li>
+</ul></details>
+</div><noscript><p style="padding:20px;text-align:center">Activá JavaScript para usar el generador.</p></noscript><div id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),R=a=>a[Math.random()*a.length|0],sp=s=>s.split(' ');
+const len=s=>[...s].length,esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const GAMES={ff:['Free Fire',12,1,'Acepta símbolos y fuentes copiadas, aunque algunos pueden no ser admitidos según la versión.'],
+pubg:['PUBG Mobile y BGMI',14,1,'Acepta algunos símbolos especiales. Probá con un marco simple primero.'],
+fn:['Fortnite',16,1,'Nombre de Epic Games, de 3 a 16 caracteres. Algunos símbolos pueden ser rechazados.'],
+rb:['Roblox',20,0,'Solo letras, números y guion bajo (3 a 20).'],
+mc:['Minecraft',16,0,'Solo letras, números y guion bajo (3 a 16).'],
+cod:['Call of Duty Mobile',15,1,'Acepta algunos símbolos. El límite puede variar según el modo.'],
+val:['Valorant y League of Legends',16,0,'Riot ID: el nombre va aparte del #tag. Solo caracteres simples.'],
+coc:['Clash of Clans y Clash Royale',15,1,'Acepta símbolos, pero evitá los muy raros.'],
+bs:['Brawl Stars',15,1,'Acepta símbolos y emojis simples.'],
+au:['Among Us',10,0,'Nombre muy corto: solo caracteres simples.'],
+gi:['Genshin Impact',14,1,'Acepta símbolos básicos.'],
+any:['Otro juego',20,1,'Sin reglas especiales: ajustá a mano si el juego tiene un límite.']};
+const W={pro:{a:sp('Elite Toxic Silent Ghost Rapid Savage Deadly Nitro Alpha Omega Shadow Cyber Rogue Fatal Prime Iron'),n:sp('Sniper Killer Hunter Wolf Viper Reaper Striker Assassin Phantom Headshot Rusher Legend Ninja Raider Tank Boss')},
+epico:{a:sp('Eterno Supremo Divino Imperial Sagrado Mitico Glorioso Titan Celestial Ancestral Real Invicto'),n:sp('Rey Emperador Dios Guerrero Campeon Dragon Fenix Leyenda Titan Gladiador Espartano Valkyria')},
+oscuro:{a:sp('Dark Black Night Silent Cursed Toxic Blood Void Grim Dead Evil Lost'),n:sp('Soul Demon Raven Skull Reaper Spectre Vampire Wraith Ghoul Shade Venom Abyss')},
+anime:{a:sp('Kawaii Sakura Neko Senpai Shiro Kuro Aka Ao Hoshi Tsuki Kitsune Mugen'),n:sp('Ninja Samurai Ronin Chan Kun Sensei Oni Ryu Hime Kage Otaku Shinobi')},
+gracioso:{a:sp('Tio Mr Don Sir Mini Super Mega Pro Lil Capitan Doctor Profe'),n:sp('Pollo Papa Taco Banana Noob Galleta Pancho Fideo Milanesa Cuchara Pepino Ñoqui')},
+militar:{a:sp('Sargento Cabo Capitan Coronel Delta Alpha Bravo Tactico Blindado Furtivo Alfa Mayor'),n:sp('Comando Francotirador Soldado Fuerza Escuadra Operador Tanque Bunker Halcon Brigada Mercenario Recon')},
+fantasia:{a:sp('Mistico Arcano Elfico Sagrado Gelido Ardiente Etereo Antiguo Lunar Solar Oscuro Cristal'),n:sp('Mago Hechicero Elfo Dragon Fenix Grifo Paladin Druida Brujo Golem Unicornio Titan')},
+latino:{a:sp('Don El Loco Rey Mortal Fantasma Letal Brutal Salvaje Sombrio Bravo Fiero'),n:sp('Cazador Lobo Dragon Tigre Halcon Jaguar Chacal Demonio Capitan Gaucho Matador Cacique')},
+cyber:{a:sp('Neon Pixel Turbo Hyper Quantum Glitch Laser Plasma Nano Sync Byte Volt'),n:sp('Bot Drone Hacker Matrix Core Circuit Vector Pulse Cyborg Droid Code Nova')},
+lindo:{a:sp('Dulce Luna Miel Suave Lila Rosa Tierna Mimosa Cielo Brisa'),n:sp('Gatita Estrella Nube Princesa Hada Mariposa Flor Conejita Cereza Panda')},
+futbol:{a:sp('Goleador Crack Pibe Maestro Fenomeno Rapido Gambeta Capitan Super Rey'),n:sp('Gol Delantero Arquero Pichichi Canonero Diez Tigre Halcon Pelota Cabezazo')}};
+const BIOS=['Sin miedo a la zona','Headshot y a otra cosa','Del lobby a la victoria','Calma y puntería','Pocas palabras, mucho booyah','Hoy gano yo','Squad primero','Un último y me voy','Modo bestia activado','Jugando por diversión','Nunca me rindo','Silencio, que se viene el rush'];
+const mk=(U,L,D)=>c=>{const k=c.charCodeAt(0);return k>=65&&k<=90?String.fromCodePoint(U+k-65):k>=97&&k<=122?String.fromCodePoint(L+k-97):D&&k>=48&&k<=57?String.fromCodePoint(D+k-48):c};
+const SC='ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ';
+const FONTS={'Negrita':mk(0x1D400,0x1D41A,0x1D7CE),'Caligrafía':mk(0x1D4D0,0x1D4EA),'Gótica':mk(0x1D56C,0x1D586),'Sans negrita':mk(0x1D5D4,0x1D5EE,0x1D7EC),'Sans cursiva':mk(0x1D63C,0x1D656),'Monoespaciada':mk(0x1D670,0x1D68A,0x1D7F6),'Círculos':mk(0x24B6,0x24D0),'Ancha':mk(0xFF21,0xFF41,0xFF10),'Cuadrada':mk(0x1F130,0x1F130),'Burbujas negras':mk(0x1F150,0x1F150),'Tachado':c=>c+'\u0336','Subrayado':c=>c+'\u0332','Versalitas':c=>/[a-z]/i.test(c)?SC[c.toLowerCase().charCodeAt(0)-97]:c};
+const DEC=['꧁{}꧂','『{}』','【{}】','★彡{}彡★','☠{}☠','✦{}✦','⚔{}⚔','ღ{}ღ','「{}」','❖{}❖','♛{}♛','〖{}〗','๛{}๛','{}ッ','{}ツ','xX{}Xx','˹{}˼','𓆩{}𓆪','⚡{}⚡','♯{}♯'];
+const NUMS=['7','69','99','666','777','23','10','01','YT','HD','21','404','13','xD'];
+const fxF=(s,f)=>[...s].map(FONTS[f]).join('');
+const strip=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+Object.keys(GAMES).forEach(k=>$('#game').add(new Option(GAMES[k][0],k)));
+$('#fx').add(new Option('Ninguna','none'));$('#fx').add(new Option('Al azar','rnd'));Object.keys(FONTS).forEach(f=>$('#fx').add(new Option(f,f)));
+$('#dc').add(new Option('Ninguno','none'));$('#dc').add(new Option('Al azar','rnd'));DEC.forEach((d,i)=>$('#dc').add(new Option(d.replace('{}','abc'),i)));
+let tab='name',cur=[],favs=[];
+try{favs=JSON.parse(localStorage.getItem('nx_favs')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('nx_favs',JSON.stringify(favs))}catch(e){}};
+const G=()=>GAMES[$('#game').value];
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('s');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('s'),1400)}
+async function copy(s){try{await navigator.clipboard.writeText(s)}catch(e){const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(x){}a.remove()}toast('Copiado: '+s)}
+function themeWords(){let t=$('#theme').value;if(t==='mix')t=R(Object.keys(W));return W[t]}
+function base(){const w=themeWords(),a=R(w.a),n=R(w.n),kw=strip($('#kw').value.trim()).replace(/\s+/g,'');
+const ps=$('#ps').value,p=kw?(ps==='s'?[()=>kw+n,()=>kw+'_'+n,()=>kw+a]:ps==='e'?[()=>a+kw,()=>n+kw,()=>a+'_'+kw]:[()=>kw+n,()=>a+kw,()=>kw,()=>kw+'_'+n,()=>n+kw]):[()=>a+n,()=>n+a,()=>a+'_'+n,()=>n,()=>a+n,()=>n+'_'+a];return strip(R(p)())}
+function make(){const g=G(),sy=g[2];let d=$('#dc').value,fx=$('#fx').value;
+const dec=sy&&d!=='none'?(d==='rnd'?R(DEC):DEC[d]):'{}',extra=len(dec)-2,lim=Math.max(3,Math.min(+$('#mx').value||99,g[1])-extra);let s;
+const sl=$('#st').value;for(let i=0;i<120;i++){s=base();const c=$('#case').value;if(c==='up')s=s.toUpperCase();if(c==='low')s=s.toLowerCase();
+if($('#leet').checked)s=s.replace(/[aeios]/gi,x=>({a:4,e:3,i:1,o:0,s:5})[x.toLowerCase()]);
+if($('#num').checked&&len(s)+2<=lim)s+=R(NUMS);if(len(s)<=lim&&(!sl||s[0].toUpperCase()===sl))break}
+s=[...s].slice(0,lim).join('');if(!sy)s=s.replace(/[^A-Za-z0-9_]/g,'');
+if(sy&&fx!=='none')s=fxF(s,fx==='rnd'?R(Object.keys(FONTS)):fx);return dec.replace('{}',s)+($('#tg').checked?' #'+(1000+Math.random()*9000|0):'')}
+function clan(){const w=themeWords(),a=R(w.a),n=R(w.n),nm=R(['Los','Clan','Team','Legion','Hermandad','Imperio','Escuadron'])+' '+n+R(['','s',' '+a]);
+const tag=strip((nm.split(' ').map(x=>x[0]).join('')+n.slice(1,3))).toUpperCase().replace(/[^A-Z]/g,'').slice(0,4);return '['+tag+'] '+nm}
+function styleList(){const t=$('#kw').value.trim()||'Nexora',o=[];Object.keys(FONTS).forEach(f=>o.push(fxF(t,f)));DEC.forEach(d=>o.push(d.replace('{}',t)));Object.keys(FONTS).slice(0,4).forEach(f=>o.push(R(DEC).replace('{}',fxF(t,f))));return o}
+function row(t,i){const f=favs.includes(t),bad=tab!=='bio'&&len(t)>G()[1];return `<div class="c${bad?' bad':''}"><span class="t">${esc(t)}</span><span class="l" title="Caracteres">${len(t)}/${G()[1]}</span><button class="b" data-p="${i}" aria-label="Copiar versión simple" title="Copiar versión simple, sin símbolos">Aa</button><button class="b" data-c="${i}" aria-label="Copiar">⧉</button><button class="b${f?' on':''}" data-f="${i}" aria-label="Favorito">${f?'★':'☆'}</button></div>`}
+function render(){const bar=$('#bar');$('#fc').textContent=favs.length;
+if(tab==='fav'){pv();cur=favs.slice();bar.innerHTML=favs.length?'<button class="ic" id="ca">Copiar todos</button><button class="ic" id="cl">Vaciar favoritos</button>':'';}
+else bar.innerHTML=tab==='style'?'Se usa el texto de "Tu palabra o nombre base". En rojo: pasa el límite del juego.':tab==='bio'?'':'Tocá un nombre para ver cómo se vería su kill.';
+$('#out').innerHTML=cur.length?cur.map(row).join(''):'<div class="empty">'+(tab==='fav'?'Todavía no guardaste favoritos. Tocá la estrella en cualquier nombre.':'Tocá Generar para ver nombres.')+'</div>'}
+const KF={
+ff:{s:'linear-gradient(135deg,#2b3a1f,#6b4a1e 60%,#1a2233)',y:'#ff9d00',yb:'rgba(255,157,0,.4)',b:'rgba(15,15,15,.72)',r:'4px',f:'700 13px system-ui',p:'r',t:'$A <s>🔫 M1887</s> $B'},
+pubg:{s:'linear-gradient(135deg,#3b4a33,#8a7b55 60%,#2a3340)',y:'#ffd23f',yb:'rgba(255,210,63,.3)',b:'rgba(0,0,0,.5)',r:'0',f:'600 13px system-ui',p:'r',t:'$A <s>M416 ✦</s> $B'},
+fn:{s:'linear-gradient(135deg,#4a2f8f,#2aa4ff 70%,#9be15d)',y:'#fff',yb:'rgba(255,255,255,.25)',b:'rgba(8,16,48,.75)',r:'2px',f:'700 13px system-ui',p:'r',t:'$A <s>Rifle de asalto</s> $B'},
+rb:{s:'linear-gradient(#6ab0ff,#9bd36a 70%)',y:'#ffd34d',yb:'rgba(0,0,0,.6)',b:'rgba(0,0,0,.45)',r:'3px',f:'14px Arial,sans-serif',p:'l',t:'$A eliminó a $B'},
+mc:{s:'linear-gradient(#78a7ff,#7fb04a 65%,#5b4630)',y:'#ffff55',yb:'rgba(0,0,0,.65)',b:'rgba(0,0,0,.5)',r:'0',f:'14px "Courier New",monospace',p:'l',t:'$B fue asesinado por $A'},
+cod:{s:'linear-gradient(135deg,#232a31,#5f6b4a 60%,#1a1e22)',y:'#4aa8ff',yb:'rgba(74,168,255,.25)',b:'rgba(0,0,0,.45)',r:'0',f:'600 13px system-ui',p:'l',t:'$A <s>AK-47</s> $B'},
+val:{s:'linear-gradient(135deg,#0f1923,#27374a 60%,#ff4655)',y:'#37d4a6',yb:'rgba(55,212,166,.25)',b:'rgba(15,25,35,.85)',r:'2px',f:'700 13px system-ui',p:'r',t:'$A <s>Vandal</s> $B'},
+coc:{s:'linear-gradient(135deg,#3d7a2e,#c9a24a)',y:'#ffd34d',yb:'rgba(0,0,0,.65)',b:'rgba(0,0,0,.5)',r:'6px',f:'700 13px system-ui',p:'c',t:'$A ganó ★★★ contra $B'},
+bs:{s:'linear-gradient(135deg,#ffb100,#ff5a00 60%,#7a1fff)',y:'#ffe14d',yb:'rgba(0,0,0,.65)',b:'rgba(0,0,0,.55)',r:'8px',f:'800 14px system-ui',p:'c',t:'$A eliminó a $B'},
+au:{s:'linear-gradient(#0b1020,#1f2b4d)',y:'#fff',yb:'rgba(255,255,255,.25)',b:'rgba(255,255,255,.14)',r:'14px',f:'14px system-ui',p:'l',t:'$A: yo vi a $B sospechoso'},
+gi:{s:'linear-gradient(135deg,#6fb1d8,#e9d9a8)',y:'#ffd88a',yb:'rgba(40,35,30,.75)',b:'rgba(40,35,30,.55)',r:'6px',f:'600 13px system-ui',p:'l',t:'$A derrotó a $B'},
+any:{s:'linear-gradient(135deg,#1c2238,#3a4a7a)',y:'#ffb02e',yb:'rgba(255,176,46,.3)',b:'rgba(0,0,0,.55)',r:'4px',f:'700 13px system-ui',p:'r',t:'$A eliminó a $B'}};
+const RF='<svg viewBox="0 0 44 12" width="40" height="11" fill="currentColor"><path d="M0 5h10l2-2h12l1 2h9l4-1v3l-4-.5h-8l-1 4h-4l-1-4H11l-3 4H4l1-4z"/></svg>',OUT='-2px 0 #1a0b3a,2px 0 #1a0b3a,0 -2px #1a0b3a,0 2px #1a0b3a,0 3px #1a0b3a',T=`<em>$A</em><s>${RF}</s><u>$B</u>`,BN=h=>a=>'<div class="bn">'+h+'</div>';
+Object.assign(KF,{
+ff:{s:'linear-gradient(#e6a85c 0 28%,#4f7a34 28% 70%,#2d3f22 70%)',y:'#ffb000',yb:'rgba(255,176,0,.5)',b:'rgba(110,18,18,.6)',r:'3px',f:'700 13px system-ui',p:'r',ea:'#fff',eb:'#ffd9d9',t:T,x:BN('Eliminaste a <b style="color:#ffb000">Rival_01</b> <small>x1</small>')},
+pubg:{s:'linear-gradient(#9fc3e8 0 30%,#7f9a5a 30% 72%,#5d5a48 72%)',y:'#ffd23f',yb:'rgba(255,210,63,.35)',b:'rgba(0,0,0,.4)',r:'0',f:'600 13px system-ui',p:'r',ea:'#fff',eb:'#ff6a5a',t:`<em>$A</em><s>${RF} ✦</s><u>$B</u>`,x:BN('Eliminaste a <b style="color:#ffd23f">Rival_01</b>')},
+fn:{s:'linear-gradient(#5b3fd6 0 35%,#2aa4ff 35% 60%,#79d34a 60%)',y:'#fff',yb:'rgba(255,255,255,.28)',b:'rgba(8,12,40,.72)',r:'2px',f:'700 13px system-ui',p:'r',t:T,x:BN('ELIMINASTE A <b>Rival_01</b>')},
+rb:{s:'linear-gradient(#8ec9ff 0 62%,#4b9b3f 62%)',y:'#ffd34d',yb:'rgba(0,0,0,.55)',b:'rgba(0,0,0,.45)',r:'3px',f:'600 14px Arial,sans-serif',p:'tl',ea:'#ffd34d',eb:'#fff',t:'<em>$A:</em> ¡Eliminé a <u>$B</u>!'},
+mc:{s:'linear-gradient(#7aa7ff 0 52%,#5fa83a 52% 66%,#7a5a3a 66%)',y:'#ffff55',yb:'rgba(0,0,0,.65)',b:'rgba(0,0,0,.45)',r:'0',f:'15px \'Courier New\',monospace',p:'l',pb:'36px',ts:'2px 2px 0 #3f3f3f',t:'<u>$B</u> fue asesinado por <em>$A</em>',x:()=>'<div class="hb"></div>'},
+cod:{s:'linear-gradient(#d9b98a 0 30%,#8c8a63 30% 70%,#4d4b3a 70%)',y:'#fff',yb:'linear-gradient(90deg,rgba(255,255,255,.28),transparent)',b:'linear-gradient(90deg,rgba(0,0,0,.55),transparent)',r:'0',f:'700 13px system-ui',p:'tl',ea:'#5ab4ff',eb:'#ff5a5a',t:T,x:BN('Eliminaste a <b>Rival_01</b> <b style="color:#ffd34d">+100</b>')},
+val:{s:'linear-gradient(135deg,#0f1923,#1f3347 60%,#3a1a22)',y:'#fff',yb:'rgba(255,255,255,.14)',b:'rgba(15,25,35,.92)',r:'2px',f:'700 13px system-ui',p:'r',ea:'#7fe8c5',eb:'#ff7a85',t:`<b class="ag"></b><em>$A</em><s>${RF}</s><u>$B</u><b class="ag e"></b>`},
+coc:{s:'linear-gradient(135deg,#5fae3a,#3d7a2e 60%,#8a6a3a)',y:'#fff',yb:'linear-gradient(90deg,#ffb100,#f27d00)',b:'linear-gradient(90deg,#2a6df4,#1747b8)',r:'8px',f:'400 16px \'Lilita One\',system-ui',p:'c',ts:OUT,eb:'#ffd34d',t:'<em>$A</em> ★★★ <u>$B</u>'},
+bs:{s:'linear-gradient(135deg,#ffb100,#ff5a00 60%,#7a1fff)',y:'#fff',yb:'linear-gradient(90deg,#ffb100,#f27d00)',b:'linear-gradient(90deg,#2a6df4,#1747b8)',r:'8px',f:'400 16px \'Lilita One\',system-ui',p:'c',ts:OUT,eb:'#ffe14d',t:'<em>$A</em> <s>☠</s> <u>$B</u>'},
+au:{s:'linear-gradient(#0b1020,#1f2b4d)',y:'#4a8cff',yb:'#e4eeff',b:'#fff',r:'14px',f:'600 14px system-ui',p:'l',c:'#111',ts:'none',ea:'#c51111',eb:'#111',t:'<em>$A:</em> fue <u>$B</u>, lo vi'},
+gi:{s:'linear-gradient(#8fc7ee 0 55%,#7cc06a 55%)',y:'#ffe7a8',yb:'rgba(60,45,30,.8)',b:'rgba(40,35,30,.55)',r:'6px',f:'600 13px system-ui',p:'l',ea:'#ffe7a8',eb:'#fff',t:'<em>$A</em> derrotó a <u>$B</u>'}});
+let UB='',UW='';
+Object.assign(KF.ff,{f:'700 14px Rajdhani,system-ui'});Object.assign(KF.pubg,{f:'600 14px \'Barlow Condensed\',system-ui'});Object.assign(KF.fn,{f:'400 15px Anton,system-ui'});Object.assign(KF.rb,{f:'600 14px \'Source Sans 3\',Arial,sans-serif'});Object.assign(KF.mc,{f:'17px VT323,monospace'});Object.assign(KF.cod,{f:'700 14px Rajdhani,system-ui'});Object.assign(KF.val,{f:'700 14px \'Barlow Condensed\',system-ui'});Object.assign(KF.au,{f:'14px \'Varela Round\',system-ui'});
+function kfHTML(n){const k=$('#game').value,c=KF[k]||KF.any,g=GAMES[k],a=esc(n),L=(x,z,y)=>'<div class="kl'+(y?' you':'')+'">'+(c.t.replace('$A',()=>x).replace('$B',()=>z)).split(RF).join(UW?'<img src="'+UW+'" alt="" style="height:15px;vertical-align:middle">':RF)+'</div>';
+return '<div class="kf '+c.p+'" style="--s:'+c.s+';--y:'+c.y+';--yb:'+c.yb+';--b:'+c.b+';--r:'+c.r+';--f:'+c.f+';--ea:'+(c.ea||'#fff')+';--eb:'+(c.eb||'#fff')+';--c:'+(c.c||'#fff')+';--pb:'+(c.pb||'10px')+';--ts:'+(c.ts||'0 1px 2px #0008')+(UB?';background:url('+UB+') center/cover':'')+'">'+(c.x?c.x(a):'')+'<div class="kk">'+L('Lobo_Gris','Ana_77')+L(a,'Rival_01',1)+L('Tigre99','xDark')+'</div></div><div class="cp">'+g[0]+': así se vería tu kill ('+len(n)+'/'+g[1]+' caracteres'+(len(n)>g[1]?', se cortaría en el juego':'')+'). Es una simulación aproximada: el diseño real cambia con las actualizaciones.</div>'}
+function pv(t){const p=$('#pv');if(!t||tab==='bio'||tab==='fav'||tab==='sym'||tab==='chk'){p.hidden=true;return}p.hidden=false;p.innerHTML=kfHTML(t)}
+let hist=[];const SAVE=['game','theme','case','fx','dc','qty','mx','st','ps','kw','num','leet','tg'];
+const plain=t=>t.normalize('NFKD').replace(/[^A-Za-z0-9_]/g,'');
+function saveS(){try{localStorage.setItem('nx_set',JSON.stringify(SAVE.map(i=>{const e=$('#'+i);return e.type==='checkbox'?e.checked:e.value})))}catch(e){}}
+function loadS(){try{const v=JSON.parse(localStorage.getItem('nx_set')||'null');if(v)SAVE.forEach((i,k)=>{const e=$('#'+i);if(e.type==='checkbox')e.checked=!!v[k];else e.value=v[k]})}catch(e){}}
+function upd(){const m=$('#mine');if(m)m.textContent=$('#kw').value||'Escribí tu nombre arriba';saveS()}
+function add(x){const k=$('#kw'),m=$('#sp')?$('#sp').value:'e';hist.push(k.value);k.value=m==='s'?x+k.value:m==='b'?x+k.value+x:k.value+x;upd()}
+function act(a){const k=$('#kw');if(a==='cp')copy(k.value||'');if(a==='rnd')add(R(sp(Object.values(SYM).join(' '))));if(a==='un'&&hist.length){k.value=hist.pop();upd()}if(a==='clr'){hist.push(k.value);k.value=k.value.replace(/[^\p{L}\p{N}_]/gu,'');upd()}}
+function mineBox(){const b='<button style="width:auto;padding:0 12px" data-a="';return '<div class="sy"><label style="flex-direction:row;align-items:center;gap:6px">Agregar<select id="sp"><option value="e">al final</option><option value="s">al inicio</option><option value="b">a los dos lados</option></select></label><span class="t" id="mine" style="font-size:20px">'+esc($('#kw').value||'Escribí tu nombre arriba')+'</span>'+b+'cp">Copiar</button>'+b+'rnd">Al azar</button>'+b+'un">Deshacer</button>'+b+'clr">Quitar símbolos</button></div>'}
+const SYM={'Estrellas y coronas':'★ ☆ ✦ ✧ ✪ ✯ ♛ ♚ ♕ ❂ ☬ ⚜','Armas y oscuro':'⚔ ☠ ☢ ☣ ⛧ ✞ ⚡ ⛓ ☾ ♆','Corazones':'♥ ❤ ღ ♡ ❣ ❥ ❦','Flechas y líneas':'➳ ➤ ☛ ═ ━ ╰ ╯ ・ ᛫','Matemática y dinero':'∞ ∆ ∑ √ ≈ ≠ $ ¢ £ ¥ € ₿','Braille':'⠃ ⠗ ⠁ ⠊ ⠇ ⠑ ⠍ ⠕'};
+function special(){cur=[];const o=$('#out');$('#pv').hidden=true;$('#fc').textContent=favs.length;
+if(tab==='sym'){$('#bar').textContent='Tocá un símbolo y se suma al nombre que escribiste arriba; después tocá Generar para usarlo en los nombres. Muchos juegos rechazan algunos símbolos y los espacios invisibles: probá antes de pagar un cambio de nombre.';o.innerHTML=mineBox()+Object.keys(SYM).map(k=>'<div class="sy"><b style="width:100%">'+k+'</b>'+sp(SYM[k]).map(x=>'<button data-s="'+x+'">'+x+'</button>').join('')+'</div>').join('')+'<div class="sy"><b style="width:100%">Espacios invisibles</b><button style="width:auto;padding:0 12px" data-s="\u3164">Invisible 1</button><button style="width:auto;padding:0 12px" data-s="\u2800">Invisible 2</button></div>';return}
+const t=$('#kw').value.trim()||'Nexora',n=len(t),pl=/^[A-Za-z0-9_]+$/.test(t),sm=[...t].filter(c=>!/[A-Za-z0-9]/.test(c)).length;
+$('#bar').textContent='Compatibilidad de "'+t+'" ('+n+' caracteres). Cambialo en "Tu palabra o nombre base".'+(sm>n/2?' Tiene muchos símbolos y cuesta leerlo.':'');
+o.innerHTML=Object.values(GAMES).map(g=>{const a=n<=g[1],b=g[2]||pl;return '<div class="c'+(a&&b?'':' bad')+'"><span class="t">'+g[0]+'</span><span class="l">'+(a&&b?'Compatible':!a?'Se pasa ('+n+'/'+g[1]+')':'Solo letras, números y _')+'</span></div>'}).join('')}
+function run(){if(tab==='fav')return render();if(tab==='sym'||tab==='chk')return special();const q=+$('#qty').value,s=new Set();
+if(tab==='style')styleList().forEach(x=>s.add(x));else if(tab==='bio')BIOS.forEach(x=>s.add(G()[2]&&$('#fx').value in FONTS?fxF(x,$('#fx').value):x));else for(let i=0;i<q*6&&s.size<q;i++)s.add(tab==='clan'?clan():make());cur=[...s];render();pv(cur[0])}
+function info(){const g=G(),sy=g[2];$('#info').textContent=g[0]+': hasta '+g[1]+' caracteres (aprox.). '+g[3];$('#fx').disabled=$('#dc').disabled=!sy}
+$('#out').addEventListener('click',e=>{const tt=e.target.closest('.t');if(tt&&tt.closest('.c'))pv(tt.textContent);const b=e.target.closest('button');if(!b)return;
+if(b.dataset.c!=null){copy(cur[b.dataset.c]);const p=$('#pv');pv(cur[b.dataset.c])}
+if(b.dataset.p!=null)copy(plain(cur[b.dataset.p]));
+if(b.dataset.s!=null)add(b.dataset.s);
+if(b.dataset.a)act(b.dataset.a);
+if(b.dataset.f!=null){const t=cur[b.dataset.f],i=favs.indexOf(t);i<0?favs.push(t):favs.splice(i,1);save();const keep=tab==='fav';if(keep)cur=favs.slice();render()}});
+$('#bar').addEventListener('click',e=>{if(e.target.id==='ca')copy(favs.join('\n'));if(e.target.id==='cl'&&favs.length){favs=[];save();cur=[];render()}});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));cur=[];tab==='fav'?render():run()});
+$('#game').onchange=()=>{info();run()};['theme','case','fx','dc','qty','num','leet'].forEach(i=>$('#'+i).onchange=run);
+$('#run').onclick=run;$('#kw').addEventListener('keydown',e=>{if(e.key==='Enter')run()});
+
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(l=>$('#st').add(new Option(l,l)));$('#st').onchange=$('#mx').onchange=$('#ps').onchange=$('#tg').onchange=run;loadS();SAVE.forEach(i=>$('#'+i).addEventListener('change',saveS));$('#kw').addEventListener('input',saveS);$('#sur').onclick=()=>{['theme','fx','dc','case'].forEach(i=>{const s=$('#'+i);if(!s.disabled)s.value=R([...s.options]).value});saveS();run()};const rd=(id,set)=>$(id).onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{set(r.result);toast('Imagen cargada');pv(cur[0])};r.readAsDataURL(f)};rd('#ub',v=>UB=v);rd('#uw',v=>UW=v);$('#ur').onclick=()=>{UB=UW='';$('#ub').value=$('#uw').value='';pv(cur[0])};info();run();
+</script></body></html>
